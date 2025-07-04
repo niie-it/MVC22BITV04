@@ -1,0 +1,4 @@
+﻿#myfooter{text-align:center; color: blue; border: 1px solid red;}
+.myheader{height: 100px; background-color:cyan;}
+.mycontent{min-height: 500px; border: 1px dotted blue;}
+li a{ text-decoration: none; color: blue;}
