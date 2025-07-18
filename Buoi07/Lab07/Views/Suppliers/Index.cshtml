@@ -1,0 +1,23 @@
+﻿@model List<Lab07.Data.Supplier>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of Suppliers</h1>
+<form asp-action="Index">
+    <input name="Keyword" placeholder="Please input keyword here" />
+    <button class="btn btn-success">Search</button>
+</form>
+<table class="table table-hover">
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Phone</td>
+            <td>@item.Email</td>
+            <td>@item.Logo</td>
+        </tr>
+    }
+</table>
+
