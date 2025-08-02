@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>THỐNG KÊ</h2>
+<fieldset>
+    Từ ngày:
+    <input id="tuNgay" type="date" />
+    đến ngày:
+    <input id="denNgay" type="date" />
+    <button type="button" id="btnTraCuu" class="btn btn-success">Tra cứu</button>
+</fieldset>
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('myChart');
+</script>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#btnTraCuu").click(function () {
+                $.ajax({
+                    url: "/ThongKe/ThongKeTheoLoai",
+                    data: {
+                        TuNgay: $("#tuNgay").val(),
+                        DenNgay: $("#denNgay").val(),
+                    },
+                    success: function (data) {
+                        let myLabels = data.map((item) => item.tenLoai);
+                        let myStatitics = data.map((item) => item.doanhThu);
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: myLabels,
+                                datasets: [{
+                                    label: 'Doanh thu ($)',
+                                    data: myStatitics,
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+
+                    }
+                });
+            });
+        });
+    </script>
+}

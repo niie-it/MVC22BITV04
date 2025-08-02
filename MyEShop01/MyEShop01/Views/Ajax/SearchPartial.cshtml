@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MyEShop01.Models.KetQuaTimKiemVM>
+
+@{
+	ViewData["Title"] = "SearchPartial";
+}
+
+<style>
+	.hh-box {
+		width: 200px; display: inline-block;
+		height: 300px; text-align: center; padding-top: 7px;
+	}
+
+		.hh-box:hover {
+			border: 1px solid blue; box-shadow: 0 0 10px red;
+		}
+	.hh-box-image{ width: 80%;}
+</style>
+@foreach(var item in Model)
+{
+	<div class="hh-box">
+		<img src="~/Hinh/HangHoa/@item.Hinh" class="hh-box-image" />
+	</div>
+}
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.MaHh)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.TenHh)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Hinh)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.DonGia)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.NgaySX)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Loai)
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.MaHh)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.TenHh)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Hinh)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DonGia)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.NgaySX)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Loai)
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
